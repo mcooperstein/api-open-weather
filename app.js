@@ -1,11 +1,11 @@
-//var apiKey = "06f4da569d9b1bca7a02f8f3778065d7";
+var apiKey = "06f4da569d9b1bca7a02f8f3778065d7";
 var coordinates = {
     lat: 0,
     lng: 0
 };
 /*example api endpoint:
 http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=06f4da569d9b1bca7a02f8f3778065d7
-apiKey for googleTimeZones API: AIzaSyBqxH48zYJmYyoGx9i2rPZX8oywZylbiXE
+apiKey for googleTimeZones API: AIzaSyDz7bLbxSCtbzwsPX7oDjybneze2EkduwA
 */
 function myFunction() {
     if (this.readyState == 4 && this.status == 200) {
@@ -31,8 +31,8 @@ function myFunction2() {
 
         var targetDate = new Date() // Current date/time of user computer
         var timestamp = targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60 // Current UTC date/time expressed as seconds since midnight, January 1, 1970 UTC
-        var apikey = 'AIzaSyBqxH48zYJmYyoGx9i2rPZX8oywZylbiXE'
-        var apicall = 'https://maps.googleapis.com/maps/api/timezone/json?location=' + coordinates.lat + ',' + coordinates.lng + '&timestamp=' + timestamp + '&key=' + apikey
+        var apikey = 'AIzaSyDz7bLbxSCtbzwsPX7oDjybneze2EkduwA';
+        var apicall = 'https://maps.googleapis.com/maps/api/timezone/json?location=' + coordinates.lat + ',' + coordinates.lng + '&timestamp=' + timestamp + '&key=' + apikey;
 
         var xhr = new XMLHttpRequest() // create new XMLHttpRequest2 object
         xhr.onreadystatechange = myFunction3;
@@ -57,15 +57,16 @@ function apiCall() {
     var search = document.getElementById("search").value;
     var myRequest = new XMLHttpRequest();
     myRequest.onreadystatechange = myFunction;
-    myRequest.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=" + search + "&appid=06f4da569d9b1bca7a02f8f3778065d7&units=imperial");
+    myRequest.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + search + "&appid=06f4da569d9b1bca7a02f8f3778065d7&units=imperial");
     myRequest.send();
     console.log(myRequest);
 }
+
 function apiCall2() {
     var search = document.getElementById("search").value;
     var myRequest = new XMLHttpRequest();
     myRequest.onreadystatechange = myFunction2;
-    myRequest.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=" + search + "&key=AIzaSyBqxH48zYJmYyoGx9i2rPZX8oywZylbiXE");
+    myRequest.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=" + search + "&key=AIzaSyBPLqWp54cqYF0BJg9a02bn5RWEX3I_88Q");
     myRequest.send();
     console.log(myRequest);
 }
@@ -81,7 +82,7 @@ $(document).on("keydown", function (event) {
 $("button").click(function () {
     apiCall();
     apiCall2();
-})
+});
 
 /*var targetDate = new Date() // Current date/time of user computer
 var timestamp = targetDate.getTime()/1000 + targetDate.getTimezoneOffset() * 60 // Current UTC date/time expressed as seconds since midnight, January 1, 1970 UTC
@@ -103,4 +104,4 @@ xhr.onload = function(){
         alert('Request failed.  Returned status of ' + xhr.status)
     }
 }
-xhr.send() // send request*/
+xhr.send() */
